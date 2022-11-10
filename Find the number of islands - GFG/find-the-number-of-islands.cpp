@@ -5,20 +5,27 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    void dfs(int i, int j, vector<vector<int>> &vis, vector<vector<int>>&grid){
-        int drow[] = {0,1,0,-1,1,-1,1,-1};
-        int dcol[] = {1,0,-1,0,1,-1,-1,1};
-        for(int ind= 0; ind < 8; ++ind){
-            int nrow = i + drow[ind];
-            int ncol = j + dcol[ind];
-            if(nrow >=0 && nrow < grid.size() && ncol >=0 && ncol < grid[0].size() &&
-            grid[nrow][ncol] == 1 && !vis[nrow][ncol]){
-                vis[nrow][ncol] = 1;
-                dfs(nrow,ncol,vis,grid);
+    void bfs(int i, int j, vector<vector<int>> &vis, vector<vector<int>>&grid){
+        queue<pair<int,int>> q;
+        q.push({i,j});
+        while(!q.empty()){
+            auto x = q.front().first;
+            auto y = q.front().second;
+            q.pop();
+            int drow[] = {0,1,0,-1,1,-1,1,-1};
+            int dcol[] = {1,0,-1,0,1,-1,-1,1};
+            for(int ind= 0; ind < 8; ++ind){
+                int nrow = x + drow[ind];
+                int ncol = y + dcol[ind];
+                if(nrow >=0 && nrow < grid.size() && ncol >=0 && ncol < grid[0].size() &&
+                grid[nrow][ncol] == 1 && !vis[nrow][ncol]){
+                    vis[nrow][ncol] = 1;
+                    q.push({nrow,ncol});
+                }
+                
             }
-            
         }
-    }
+}
     int numIslands(vector<vector<char>>& grid) {
         int n= grid.size(), m = grid[0].size();
         vector<vector<int>> v(n,vector<int>(m,0));
@@ -34,7 +41,7 @@ class Solution {
                 if(v[i][j] == 1 && !vis[i][j]){
                     vis[i][j] = 1;
                     ans++;
-                    dfs(i,j,vis,v);
+                    bfs(i,j,vis,v);
                 }
             }
         }
