@@ -19,8 +19,8 @@ public:
         }
         
         sort(begin(v), end(v), comp);
-        map<int,int> m;
         int sc = n;
+        vector<int> m(n);
         for(auto it : v)
         m[it.first] = sc--;
         
