@@ -6,14 +6,14 @@ public:
         for(auto it :times)
         adj[it[0]].push_back({it[1], it[2]});
         int ans = 0;
-        queue<pt> q;
+        priority_queue<pt,vector<pt>,greater<pt>> q;
         q.push({0,k});
         vector<int> dist(n+1,1e9);
         dist[k] = 0;
         while(!q.empty())
         {
-            auto node = q.front().second;
-            auto time = q.front().first;
+            auto node = q.top().second;
+            auto time = q.top().first;
             q.pop();
             
             for(auto nodes : adj[node])
