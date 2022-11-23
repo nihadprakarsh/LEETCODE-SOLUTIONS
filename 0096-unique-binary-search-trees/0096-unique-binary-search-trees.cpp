@@ -1,31 +1,20 @@
 class Solution {
 public:
-    unsigned long int binomialCoeff(unsigned int n, unsigned int k) 
-{ 
-	unsigned long int res = 1; 
-
-	// Since C(n, k) = C(n, n-k) 
-	if (k > n - k) 
-		k = n - k; 
-
-	// Calculate value of [n*(n-1)*---*(n-k+1)] / [k*(k-1)*---*1] 
-	for (int i = 0; i < k; ++i) 
-	{ 
-		res *= (n - i); 
-		res /= (i + 1); 
-	} 
-
-	return res; 
-}
+    int dp[20];
     unsigned long int catalan(unsigned int n) 
     { 
-	// Calculate value of 2nCn 
-	unsigned long int c = binomialCoeff(2*n, n); 
+        // Base case 
+        if (n <= 1) return 1; 
+        if(dp[n] != -1) return dp[n];
+       
+        unsigned long int res = 0; 
+        for (int i=0; i<n; i++) 
+            res += catalan(i)*catalan(n-i-1); 
 
-	// return 2nCn/(n+1) 
-	return c/(n+1); 
+        return dp[n] = res; 
     }
     int numTrees(int n) {
+        memset(dp, -1, sizeof(dp));
         return catalan(n);
     }
 };
