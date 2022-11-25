@@ -35,7 +35,7 @@ class Solution {
 public:
     int removeStones(vector<vector<int>>& stones) {
         int maxRow, maxCol;
-        unordered_map<int,int> m;
+        set<int> st;
         for(auto it : stones)
         {
             maxRow = max(maxRow, it[0]);
@@ -48,14 +48,13 @@ public:
             int col = it[1] + maxRow + 1;
             dsu.Union(row, col);
             
-            m[row] = 1;
-            m[col] = 1;
+           st.insert(row); st.insert(col);
         }
         
         int ans = 0;
-        for(auto it : m)
+        for(auto it : st)
         {
-            if(dsu.findParent(it.first) == it.first)
+            if(dsu.findParent(it) == it)
             ans++;
         }
         return stones.size()-ans;
