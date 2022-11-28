@@ -36,7 +36,7 @@ public:
     int maxUniqueSplit(string s) {
         unordered_set<string>st;
         string temp = "";
-        find(s,0,st,temp);
+        find(s,0,st,"");
         return ans;
     }
 };
