@@ -1,7 +1,7 @@
 class Solution {
 public:
     int ans =0 ;
-    void find(string &s, int ind, unordered_set<string>&st,string &temp)
+    void find(string &s, int ind, unordered_set<string>&st,string temp)
     {
         if(ind == s.size()-1)
         {
