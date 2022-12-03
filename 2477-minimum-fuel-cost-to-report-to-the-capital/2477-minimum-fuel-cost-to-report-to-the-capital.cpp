@@ -1,8 +1,10 @@
 class Solution {
 public:
     long long int ans =0 ;
+    int dp[1000001];
     int bfs(int node, vector<int> adj[], vector<int> &vis, int seats)
     {
+        if(dp[node] != -1) return dp[node];
         int count = 1;
         vis[node] = 1;
         for(auto nodes : adj[node])
@@ -15,10 +17,11 @@ public:
         if(count % seats) x++;
         if(node != 0)
         ans += x;
-        return count;
+        return dp[node] = count;
     }
     
     long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
+        memset(dp, -1, sizeof(dp));
         int n = roads.size();
         vector<int> adj[n+1];
         vector<int> vis(n+1,0);
