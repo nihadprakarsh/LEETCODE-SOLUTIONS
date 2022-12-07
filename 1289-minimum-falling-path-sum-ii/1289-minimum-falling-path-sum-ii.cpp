@@ -3,8 +3,6 @@ public:
     int dp[200][200];
     int find(vector<vector<int>>& grid, int i, int j)
     {
-        // if(i < 0 || j < 0 || i == grid.size() || j == grid[0].size())
-        // return (int)1e9;
         if(dp[i][j] != -1) return dp[i][j];
         if(i == grid.size()-1)
         return grid[i][j];
