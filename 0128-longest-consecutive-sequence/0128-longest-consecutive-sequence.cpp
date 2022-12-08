@@ -1,19 +1,29 @@
 class Solution {
 public:
-    int longestConsecutive(vector<int>& nums) {
-        set<int> st(begin(nums), end(nums));
-        vector<int> v(begin(st), end(st));
-        int len = 0, maxLen =0 ;
-        for(int i=0; i < v.size(); ++i)
+    int Getval(map<int,bool>&m,int key)
+    {
+        int ans =0 ;
+        while(m.count(key))
         {
-            if(i==0 || v[i]-v[i-1]<=1)
-            {
-                len++;
-                maxLen = max(maxLen,len);
-            }
-            else
-            len = 1;
+            ans++;
+            key++;
         }
-        return maxLen;
+        return ans;
+    }
+    int longestConsecutive(vector<int>& nums) {
+        map<int,bool> m;
+        for(auto it : nums)
+        m[it] = true;
+        for(auto it:  nums)
+        if(m.count(it-1))
+        m[it] = false;
+        
+        int ans = 0;
+        for(auto it : m)
+        {
+            if(it.second == true)
+            ans = max(ans,Getval(m,it.first));
+        }
+        return ans;
     }
 };
