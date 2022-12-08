@@ -10,12 +10,12 @@ public:
     int getPow(int i,int steps)
     {
         if(i==1)
-        return steps;
-        if(st.count(i)) return 0;
+        return 0;
+        if(st.count(i)) -1e8;
         st.insert(i);
         int a= 0,b=0;
-        if(i%2) a = getPow(3*i+1,steps+1);
-        else b= getPow(i/2,steps+1);
+        if(i%2) a = 1 + getPow(3*i+1,steps+1);
+        else b= 1 + getPow(i/2,steps+1);
         return max(a,b);
     }
     int getKth(int lo, int hi, int k) {
