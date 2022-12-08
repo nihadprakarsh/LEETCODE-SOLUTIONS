@@ -1,18 +1,19 @@
 class Solution {
 public:
     int dp[1001][1001];
-    int find(string &text1, string &text2, int ind1, int ind2)
-    {
-        if(ind1 == text1.size() || ind2 == text2.size()) return 0;
-        if(dp[ind1][ind2] != -1) return dp[ind1][ind2];
-        int a =0 , b =0 ;
-        if(text1[ind1] == text2[ind2])
-        a = 1 + find(text1,text2,ind1+1,ind2+1);
-        b = max(find(text1,text2,ind1+1,ind2),find(text1,text2,ind1,ind2+1));
-        return dp[ind1][ind2] = max(a,b);
-    }
     int longestCommonSubsequence(string text1, string text2) {
-        memset(dp, -1, sizeof(dp));
-        return find(text1,text2,0,0);
+        memset(dp, 0, sizeof(dp));
+        for(int ind1 = text1.size()-1; ind1 >=0 ; --ind1)
+        {
+            for(int ind2 = text2.size()-1; ind2>=0; ind2--)
+            {
+                int a =0 , b =0 ;
+                if(text1[ind1] == text2[ind2])
+                a = 1 + dp[ind1+1][ind2+1];
+                b = max(dp[ind1+1][ind2],dp[ind1][ind2+1]);
+                dp[ind1][ind2] = max(a,b);
+            }
+        }
+        return dp[0][0];
     }
 };
