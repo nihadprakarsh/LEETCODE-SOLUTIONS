@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[200][10001];
+    int dp[200][20001];
     bool find(vector<int>& nums, int ind, int sum)
     {
         if(sum < 0) return false;
