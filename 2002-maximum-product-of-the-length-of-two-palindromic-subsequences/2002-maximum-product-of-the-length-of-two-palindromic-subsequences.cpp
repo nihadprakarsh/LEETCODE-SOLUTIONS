@@ -12,7 +12,7 @@ public:
         }
         return true;
     }
-    void dfs(string &s, int ind, string s1, string s2)
+    void dfs(string &s, int ind, string &s1, string &s2)
     {
         if(ind==s.size())
         {
@@ -34,7 +34,8 @@ public:
         dfs(s,ind+1,s1,s2);
     }
     int maxProduct(string s) {
-        dfs(s,0,"","");
+        string s1="",s2="";
+        dfs(s,0,s1,s2);
         return ans;
     }
 };
