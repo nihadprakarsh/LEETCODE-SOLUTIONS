@@ -21,7 +21,6 @@ public:
             }
             s=0;
         }
-        return st.size()==a;
-        
+        return st.size()==a;  
     }
 };
