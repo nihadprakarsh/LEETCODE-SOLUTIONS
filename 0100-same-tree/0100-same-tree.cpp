@@ -17,7 +17,6 @@ public:
         if(!p && !q) return true;
         if(p->val != q->val) return false;
         return find(p->left,q->left) && find(p->right,q->right);
-        return true;
     }
     bool isSameTree(TreeNode* p, TreeNode* q) {
         return find(p,q);
