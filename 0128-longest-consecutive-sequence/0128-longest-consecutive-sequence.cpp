@@ -1,28 +1,33 @@
 class Solution {
 public:
-    int Getval(map<int,bool>&m,int key)
+    int ans=0;
+    int find(map<int,bool>&m, int x)
     {
-        int ans =0 ;
-        while(m.count(key))
+        int a=1;
+        while(1)
         {
-            ans++;
-            key++;
+            if(m.count(x+1))
+            {
+                x++;
+                a++;
+            }
+            else
+            break;
         }
-        return ans;
+        return a;
     }
     int longestConsecutive(vector<int>& nums) {
         map<int,bool> m;
-        for(auto it : nums)
-        m[it] = true;
-        for(auto it:  nums)
-        if(m.count(it-1))
-        m[it] = false;
-        
-        int ans = 0;
-        for(auto it : m)
+        for(auto &it:nums) m[it]=true;
+        for(auto &it:m)
         {
-            if(it.second == true)
-            ans = max(ans,Getval(m,it.first));
+            if(m.count(it.first-1))
+            m[it.first]=false;
+        }
+        for(auto &it:m)
+        {
+            if(it.second==true)
+            ans=max(ans,find(m,it.first));
         }
         return ans;
     }
