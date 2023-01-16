@@ -8,11 +8,8 @@ public:
             v[it[1]]-=it[2];
         }
         int s=0;
-        for(int i=0;i<v.size();++i)
-        {
-            s+=v[i];
-            v[i]=s;
-        }
+        for(int i=1;i<v.size();++i)
+        v[i]=v[i]+v[i-1];
         v.resize(n);
         return v;
     }
