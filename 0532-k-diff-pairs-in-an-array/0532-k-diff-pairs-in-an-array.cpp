@@ -2,7 +2,6 @@ class Solution {
 public:
     int findPairs(vector<int>& nums, int k) {
         int ans=0;
-        vector<int> dp(nums.size(),0);
         map<int,int> m;
         set<vector<int>> st;
         for(int i=0;i<nums.size();++i)
