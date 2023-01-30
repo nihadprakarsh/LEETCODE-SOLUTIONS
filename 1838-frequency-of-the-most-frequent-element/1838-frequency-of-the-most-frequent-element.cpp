@@ -6,7 +6,7 @@ public:
         while(j < nums.size())
         {
             sum+=nums[j];
-            while((nums[j]*(j-i+1)*1LL) > (sum+k+0LL) && i<j)
+            while((nums[j]*(j-i+1)*1LL) > (sum+k+0LL))
                 sum-=nums[i++];
             ans = max(ans,j-i+1);
             j++;
