@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool checkStraightLine(vector<vector<int>>& c) {
-        set<double> st;
+        vector<double> v;
         for(int i=0;i<c.size();++i)
         {
             for(int j=0;j<c.size();++j)
@@ -9,10 +9,12 @@ public:
                 if(i!=j)
                 {
                     double s=(double)abs(c[i][0]-c[j][0])/(double)abs(c[i][1]-c[j][1]);
-                    st.insert(s);
+                    v.push_back(s);
                 }
             }
         }
-        return st.size()==1;
+        for(int i=1;i<v.size();++i)
+        if(v[i]!=v[i-1]) return false;
+        return true;
     }
 };
