@@ -23,7 +23,7 @@ class Solution{
         if(dp[i][j][k]!=-1) return dp[i][j][k];
         bool flag=false;
         if(i<a.size() && a[i]==c[k])
-        flag|=find(a,b,c,i+1,j,k+1);
+        flag=find(a,b,c,i+1,j,k+1);
         if(j<b.size() && b[j]==c[k])
         flag|=find(a,b,c,i,j+1,k+1);
         return dp[i][j][k]=flag;
