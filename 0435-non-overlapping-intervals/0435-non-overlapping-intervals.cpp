@@ -6,7 +6,7 @@ public:
         int low=0,high=intervals.size()-1,mid,ans=intervals.size();
         while(low<=high)
         {
-            mid=low+(high-low)/2;
+            mid=(low+high)>>1;
             if(intervals[mid][0]>=val)
             {
                 ans=mid;
