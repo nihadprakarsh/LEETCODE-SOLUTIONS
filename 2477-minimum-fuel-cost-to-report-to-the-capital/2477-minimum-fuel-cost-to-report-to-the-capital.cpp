@@ -19,7 +19,6 @@ public:
     }
     
     long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
-        
         int n = roads.size();
         vector<int> adj[n+1];
         vector<int> vis(n+1,0);
