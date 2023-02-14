@@ -8,15 +8,15 @@ class Solution {
 public:
     int dp[1001][1001];
     bool isSubsequence(string &s, string &t) {
-        if(s == "") return true;
-        int sindex = 0;
-        for(int i = 0; i < t.size(); ++i)
+        int i=0,j=0;
+        while(j<t.size())
         {
-            if(t[i] == s[sindex])
-                sindex++;
-            if(sindex >= s.size()) return true;
+            if(s[i]==t[j])
+            i++;
+            if(i==s.size()) return 1;
+            j++;
         }
-        return false;
+        return 0;
     }
     int find(int ind,int prev,vector<string>&words)
     {
