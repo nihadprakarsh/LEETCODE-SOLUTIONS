@@ -22,7 +22,7 @@ class Solution{
 	{  
 	    // Your code goes here
 	   // memset(dp,-1,sizeof(dp));
-	   vector<vector<int>> dp(n+1,vector<int>(n+1,-1));
+	   vector<vector<int>> dp(n,vector<int>(n,-1));
 	    return find(arr,n,0,-1,dp);
 	    
 	}  
