@@ -16,7 +16,7 @@ public:
             else
                 a+=1+find(word,ind,(counter+1)%3);
         }
-        else if(counter%3 == 0){
+        else{
             if(word[ind] == 'c')
                 a+=find(word,ind+1,(counter+1)%3);
             else
