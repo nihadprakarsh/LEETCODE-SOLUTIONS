@@ -1,8 +1,10 @@
 class Solution {
 public:
+    int dp[51][160];
     int find(string &word,int ind,int counter)
     {
         if(ind == word.size()) return 0;
+        if(dp[ind][counter]!=-1) return dp[ind][counter];
         int a = 0;
         if(counter%3 == 1){
             if(word[ind] == 'a')
@@ -22,10 +24,11 @@ public:
             else
                 a+=1+find(word,ind,(counter+1)%3);
         }
-        return a;
+        return dp[ind][counter]=a;
         
     }
     int addMinimum(string word) {
+        memset(dp,-1,sizeof(dp));
         int res = find(word,0,1);
         if(word.back() == 'c')
             return res;
