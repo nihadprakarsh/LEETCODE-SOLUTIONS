@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[100001][17];
+    int dp[1<<17][17];
     bool find(vector<int>&nums,int target,int curSum,int vis,int k)
     {
         if(k==1) return true;
