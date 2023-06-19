@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[51][160];
+    int dp[51][4];
     int find(string &word,int ind,int counter)
     {
         if(ind == word.size()) return 0;
