@@ -3,13 +3,13 @@ public:
     vector<int> productExceptSelf(vector<int>& nums) {
         int c=0;
         for(int i=0;i<nums.size();++i)
-            if(nums[i] == 0) c++;
+            c+=nums[i]==0;
         if(c>=2){
             vector<int> ans(nums.size(),0);
             return ans;
         }
         
-        vector<int>left(nums.size(),0),right(nums.size(),0);
+        vector<int> left(nums.size()),right(nums.size());
         int p = 1;
         for(int i=0;i<nums.size();++i)
         {
