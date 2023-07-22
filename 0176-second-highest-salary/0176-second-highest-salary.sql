@@ -1,8 +1,8 @@
 SELECT COALESCE(
-    (SELECT DISTINCT salary
-     FROM Employee
-     WHERE salary IS NOT NULL
-     ORDER BY salary DESC
-     LIMIT 1,1),
-    NULL
-) AS SecondHighestSalary;
+        (select distinct(salary)
+        from employee
+        where salary is not null
+        order by salary DESC
+        limit 1,1
+    ),NULL
+) as SecondHighestSalary;
