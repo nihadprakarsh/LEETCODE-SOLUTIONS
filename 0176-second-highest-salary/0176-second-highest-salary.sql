@@ -1,6 +1,9 @@
-with cte as
-    (select *, DENSE_RANK() over(ORDER by salary DESC)
-    as r
-    from employee)
+select Max(salary) as SecondHighestSalary
+from employee
+where employee.salary not in (
+    select max(salary)
+    from employee
+    # group by salary
+)
 
-select IFNULL((select salary from cte where r=2 limit 1),null) as SecondHighestSalary;
+
