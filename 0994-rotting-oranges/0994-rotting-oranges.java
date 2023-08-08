@@ -11,10 +11,14 @@ class Solution {
     }
     public int orangesRotting(int[][] grid) {
         Queue<Pair> que = new ArrayDeque<>();
+        int count = 0;
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[0].length; j++){
                 if(grid[i][j] == 2){
                     que.add(new Pair(i, j, 0));
+                }
+                if(grid[i][j] == 1){
+                    count++;
                 }
             }
         }
@@ -32,18 +36,13 @@ class Solution {
 
                 if(grid[nr][nc] == 1){
                     que.add(new Pair(nr, nc, curr.time + 1));
+                    count--;
                     grid[nr][nc] = 2;
                 }
             }
         }
 
-        for(int i = 0; i < grid.length; i++){
-            for(int j = 0; j < grid[0].length; j++){
-                if(grid[i][j] == 1){
-                    return -1;
-                }
-            }
-        }
+        if(count > 0) return -1;
 
         return time;
     }
